@@ -1,0 +1,76 @@
+<html>
+<head>
+<style>
+input[type=submit] {
+    padding:5px 15px; 
+    background:DARKGREY; 
+    border:2 px;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+</style>
+</head>
+<body background="img5.jpg">
+<form name="registration4" action="select.php" onsubmit="return Validatess()">
+<table border=0 width="40%">
+<tr>
+       <td colspan="2"><h3>SEARCH A DOCTOR IN YOUR AREA</h3></td>
+        
+</tr>
+<tr>
+        <td align="left"><label><h3> Pin code:</h3></label></td>
+        <td align="left"><input type="textbox"   name="pin"  placeholder="Enter VALID PIN CODE" autofocus=""></td>
+</tr>
+<tr>
+        <td align="left"><label><h3> Doctor's Type:</h3></label></td>
+        <td align="left"><select name="dtype">
+  			<option value="select one">select one</option>
+			<option value="Dentist">Dentist</option>
+			<option value="Physiotherapist">Physiotherapist</option>
+			<option value="Pediatric">Pediatric</option>
+			</select></td>
+</tr>
+</table>
+ <input type="submit" name="submit" >
+</form>
+<script>
+var pin=document.registration3.pin;
+var dtype=document.registration3.dtype;
+function Validatess()
+{
+ if(validpin(pin,6))
+	if(validdtype(dtype))
+			{return true;}
+}
+function validpin(pin)
+{
+	var patt=/^[0-9]+$/;
+	if(pin.value.match(patt) && pin.value.length==a)
+	{
+	return true;
+	}
+	else
+	{
+	alert("ENTER VALID ZIPCODE- NO SYMBOLS & characters ALLOWED");
+	pin.focus();
+	return false;
+	}
+}
+function validdtype(dtype)
+{
+if(dtype.value=="select one")
+{alert(" select Doctor type");
+dtype.focus();
+return false;
+}
+else 
+{
+return true;
+}
+}
+</script>
+<a href="try0.html">New Doctor? CLick here!!</a>ss
+</body>
+</html>	
+

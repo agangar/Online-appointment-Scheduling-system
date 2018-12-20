@@ -1,0 +1,227 @@
+<html>
+<head>
+
+</head>
+<body background="bg.jpg">
+<form name="registration" action="insert.php" onsubmit="return Validate()">
+<fieldset>
+<legend align="center"><h1>Doctor's Details</h1></legend>
+<table border=0 width="100%">
+<tr>
+        <td align="left"><label><h3>Doctor ID:</h3></label></td>
+        <td align="left"><input type="textbox"   name="did" maxlength="12" placeholder="Enter Doctor Id" autofocus=""></td>
+</tr>
+<tr>
+        <td align="left"><label><h3> Password:</h3></label></td>
+        <td align="left"><input type="password"   name="pass" maxlength="12" placeholder="Enter Password" autofocus=""></td>
+</tr>
+
+<tr>
+        <td align="left"><label><h3>Name:</h3></label></td>
+        <td align="left"><input type="textbox"   name="name" size="10" maxlength="30"  placeholder="Enter Full Name" autofocus=""></td>
+</tr>
+
+<tr>
+       <td align="left" valign="top"><label><h3>address:</h3></label></td>
+       <td align="left"><textarea name="daddr" rows="5" cols="60" placeholder="Enter daddress" autofocus=""></textarea></td>
+</tr>
+
+<tr>
+        <td align="left"><label><h3> Pin Code </h3></label></td>
+        <td align="left"><input type="number" name="pin" id="n11" ></td>
+</tr>
+<tr>
+       <td align="left" valign="top"><label><h3>Type:</h3></label></td>
+       <td align="left"> <input type="radio" name="Type" value="Dentist">Dentist<br>
+			 <input type="radio" name="Type" value="Physiotherapist">Physiotherapist<br>
+			 <input type="radio" name="Type" value="Pedatric">Pedatric</td>
+</tr>
+
+<tr>
+       <td align="left" valign="top"><label><h3>Gender:</h3></label></td>
+       <td align="left"> <input type="radio" name="Gender" value="Male">Male<br>
+			 <input type="radio" name="Gender" value="Female">Female<br>
+			 <input type="radio" name="Gender" value="Other">Other</td>
+</tr>
+
+<tr>
+        <td align="left"><label><h3>AGE:</h3></label></td>
+        <td align="left"><input type="textbox"   name="page" placeholder="Enter AGE" autofocus=""></td>
+</tr>
+
+<tr>
+        <td align="left"><label><h3>Email ID:</h3></label></td>
+        <td align="left"><input type="textbox"   name="mail" placeholder="Enter Email-ID" autofocus=""></td>
+</tr>
+
+<tr>
+       <td align="left" valign="top"><label><h3>Qualifications:</h3></label></td>
+       <td align="left"><textarea   name="sym" rows="5" cols="60" placeholder="Enter Qualification" autofocus=""></textarea></td>
+</tr>
+<tr>
+       <td align="left" valign="top"><label><h3>Specialization:</h3></label></td>
+       <td align="left"><textarea   name="spec" rows="5" cols="60" placeholder="Enter Specializations" autofocus=""></textarea></td>
+</tr>
+<tr>
+        <td align="left"><label><h3> Experience:</h3></label></td>
+        <td align="left"><input type="textbox"   name="exp"  placeholder="Enter Experience" autofocus=""></td>
+</tr>
+<tr>
+<td align="left"><label><h3> A Picture Please:</h3></label></td>
+<td><input type="file" name="pic" accept="image/*">
+  <input type="submit" value="UPLOAD">
+</td>
+</tr>
+
+
+</table>
+ </fieldset>
+ <center>
+ <input type="submit" name="submit" value="SUBMIT">
+ <input type="reset" name="reset" value="RESET">
+ </center>
+</form>
+<script>
+var did=document.registration.did;
+var pass=document.registration.pass;
+var pname=document.registration.pname;
+var daddr=document.registration.daddr;
+var Gender=document.registration.Gender;
+var age=document.registration.page;
+var pno=document.registration.pno;
+var mail=document.registration.mail;
+var sym=document.registration.sym;
+
+function Validate()
+{
+ if(validdid(did,5,12))
+	if(validpass(pass,7,12))
+		if(validpname(pname))
+			if(validdaddr(daddr))
+				if(validgender(Gender))
+					if(validage(age))
+						if(validmail(mail))
+							if(validpno(pno))								
+							    if(validsym(sym))
+									{return true;}
+}
+
+function validdid(did,a,b)
+{
+ 	if(did.value.length==0||did.value.length<a||did.value.length>b)
+		{alert("Enter valid doctor id between"+a+" and "+b+" "+did.value);
+		 did.focus();
+		 return false;
+		}
+	return true;
+}
+function validpass(pass,a,b)
+{
+ 	if(pass.value.length==0||pass.value.length<a||pass.value.length>b)
+		{alert("Enter valid password between"+a+" and "+b);
+		 pass.focus();
+		 return false;
+		}
+	return true;
+}
+
+function validpname(pname)
+{
+	var patt=/^[A-Z a-z]+$/;
+	if(pname.value.length>0 && pname.value.match(patt))
+	{
+	return true;
+	}
+	else
+	{
+	alert("ENTER VALID NAME NO SYMBOLS AND NUMBERS ALLOWED");
+	pname.focus();
+	return false;
+	}
+}
+function validdaddr(daddr)
+{
+	var patt=/^[a-z A-Z 0-9]+$/;
+	if(daddr.value.length>0 && daddr.value.match(patt))
+	{
+	return true;
+	}
+	else
+	{
+	alert("ENTER VALID daddress NO SYMBOLS ALLOWED");
+	daddr.focus();
+	return false;
+	}
+}
+function validgender(Gender)
+{
+	if((Gender[Male].checked== false) && (Gender[Female].checked== false) && (Gender[Other].checked==false))
+	{
+	alert("Select gender");
+	Gender.focus();
+	return false;
+	}
+	else 
+	return true;
+}
+function validage(age,a,b)
+{
+	var patt=/^[0-9]+$/;
+	if(age.value.length!=0 && age.value.match(patt))
+	{return true;}
+	else
+	{
+	alert("ENTER VALID AGE");
+	age.focus();
+	return false;
+	}
+}
+
+function validmail(mail)
+{
+	var patt=/^[A-Z a-z 0-9_\.\-]+\@([a-z A-Z 0-9]+\.)+([a-z A-Z]{2,3}$)/;
+	if(mail.value.length>0 && mail.value.match(patt))
+	{
+	return true;
+	}
+	else
+	{
+	alert("ENTER VALID Email ");
+	mail.focus();
+	return false;
+	}
+}
+
+function validpno(pno)
+{
+	var patt=/^[0-9]+$/;
+	if(pno.value.length>0 && pno.value.match(patt))
+	{
+	return true;
+	}
+	else
+	{
+	alert("ENTER VALID PHONE- NO SYMBOLS & characters ALLOWED");
+	pno.focus();
+	return false;
+	}
+}
+
+function validsym(sym)
+{
+	var patt=/^[a-z A-Z 0-9]+$/;
+	if(sym.value.length>0 && sym.value.match(patt))
+	{
+	return true;
+	}
+	else
+	{
+	alert("ENTER SYMPTOMS daddress NO SYMBOLS ALLOWED");
+	sym.focus();
+	return false;
+	}
+}
+</script>
+</body>
+</html>	
+

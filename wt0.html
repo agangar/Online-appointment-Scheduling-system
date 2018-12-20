@@ -1,0 +1,168 @@
+<html>
+<head>
+<style>
+input[type=submit] {
+    padding:5px 15px; 
+    background:DARKGREY; 
+    border:2 px;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+</style>
+</head>
+<body background="img5.jpg">
+<form name="registration3" action="select.php" onsubmit="return Validatess()">
+<table border=0 width="40%">
+<tr>
+       <td colspan="2"><h3>SEARCH A DOCTOR IN YOUR AREA</h3></td>
+        
+</tr>
+<tr>
+        <td align="left"><label><h3> Pin code:</h3></label></td>
+        <td align="left"><input type="textbox"   name="pin"  placeholder="Enter VALID PIN CODE" autofocus=""></td>
+</tr>
+<tr>
+        <td align="left"><label><h3> Doctor's Type:</h3></label></td>
+        <td align="left"><select name="dtype">
+  			<option value="select one">select one</option>
+			<option value="Dentist">Dentist</option>
+			<option value="Physiotherapist">Physiotherapist</option>
+			<option value="Pediatric">Pediatric</option>
+			</select></td>
+</tr>
+</table>
+ <input type="submit" name="submit" >
+</form>
+<script>
+var pin=document.registration3.pin;
+var dtype=document.registration3.dtype;
+function Validatess()
+{
+ if(validpin(pin,6))
+	if(validdtype(dtype))
+			{return true;}
+}
+function validpin(pin)
+{
+	var patt=/^[0-9]+$/;
+	if(pin.value.match(patt) && pin.value.length==a)
+	{
+	return true;
+	}
+	else
+	{
+	alert("ENTER VALID ZIPCODE- NO SYMBOLS & characters ALLOWED");
+	pin.focus();
+	return false;
+	}
+}
+function validdtype(dtype)
+{
+if(dtype.value=="select one")
+{alert(" select Doctor type");
+dtype.focus();
+return false;
+}
+else 
+{
+return true;
+}
+}
+</script>
+<form name="registration" action="select1.php" onsubmit="return Validate()">
+<table border=0 width="40%">
+<tr>
+       <td colspan="2"><h3>DOCTOR'S LOGIN</h3></td>
+        
+</tr>
+<tr>
+        <td align="left"><label><h3> Doctor id:</h3></label></td>
+        <td align="left"><input type="textbox"   name="did"  maxlength="30"  placeholder="Enter Your Doctor ID" autofocus=""></td>
+</tr>
+<tr>
+        <td align="left"><label><h3> Password:</h3></label></td>
+        <td align="left"><input type="password"   name="Dpass" maxlength="12" placeholder="Enter Password" autofocus=""></td>
+</tr>
+</table>
+ <input type="submit" name="submit" value="LOGIN">
+</form>
+<script>
+var did=document.registration.did;
+var dpass=document.registration.dpass;
+function Validate()
+{
+ if(validdid(did,5,12))
+	if(validdpass(dpass,7,12))
+			{return true;}
+}
+
+function validdid(did,a,b)
+{
+ 	if(did.value.length==0||did.value.length<a||did.value.length>b)
+		{alert("Enter valid Doctor id between"+a+" and "+b+" "+did.value);
+		 did.focus();
+		 return false;
+		}
+	return true;
+}
+function validdpass(dpass,a,b)
+{
+ 	if(dpass.value.length==0||dpass.value.length<a||dpass.value.length>b)
+		{alert("Enter valid password between"+a+" and "+b);
+		 dpass.focus();
+		 return false;
+		}
+	return true;
+}
+</script>
+<form name="registration2" action="select2.php" onsubmit="return Validates()">
+<table border=0 width="40%">
+<tr>
+       <td colspan="2"><h3>PATIENT'S LOGIN</h3></td>
+        
+</tr>
+<tr>
+        <td align="left"><label><h3> Patient id:</h3></label></td>
+        <td align="left"><input type="textbox"   name="pid" maxlength="30"  placeholder="Enter Your Patient ID" autofocus=""></td>
+</tr>
+<tr>
+        <td align="left"><label><h3> Password:</h3></label></td>
+        <td align="left"><input type="password"   name="pass" maxlength="12" placeholder="Enter Password" autofocus=""></td>
+</tr>
+</table>
+ </fieldset>
+ <input type="submit" name="submit" value="LOGIN">
+</form>
+<script>
+var pid=document.registration2.pid;
+var pass=document.registration2.pass;
+function Validates()
+{
+ if(validpid(pid,5,35))
+	if(validpass(dpass,7,12))
+			{return true;}
+}
+
+function validpid(pid,a,b)
+{
+ 	if(pid.value.length==0||pid.value.length<a||pid.value.length>b)
+		{alert("Enter valid Patient id between"+a+" and "+b);
+		 pid.focus();
+		 return false;
+		}
+	return true;
+}
+function validpass(pass,a,b)
+{
+ 	if(pass.value.length==0||pass.value.length<a||pass.value.length>b)
+		{alert("Enter valid password between"+a+" and "+b);
+		 pass.focus();
+		 return false;
+		}
+	return true;
+}
+</script>
+</body>
+</html>	
+
